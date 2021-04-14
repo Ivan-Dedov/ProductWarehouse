@@ -79,8 +79,8 @@ namespace ProductWarehouse
         {
             // Set up images for section and product icons.
             ImageList icons = new ImageList();
-            icons.Images.Add(Image.FromFile(Constants.folderIconDirectory));
-            icons.Images.Add(Image.FromFile(Constants.bagIconDirectory));
+            icons.Images.Add(Image.FromFile(Constants.FolderIconDirectory));
+            icons.Images.Add(Image.FromFile(Constants.BagIconDirectory));
             CatalogueTreeView.ImageList = icons;
 
             // Adding a ContextMenu to the TreeView.
@@ -165,7 +165,7 @@ namespace ProductWarehouse
                 if (item is Section s)
                 {
                     TreeNode innerNode = new TreeNode(s.Name,
-                        Constants.folderIconIndex, Constants.folderIconIndex);
+                        Constants.FolderIconIndex, Constants.FolderIconIndex);
                     innerNode.Name = innerNode.Text;
                     node.Nodes.Add(innerNode);
 
@@ -175,7 +175,7 @@ namespace ProductWarehouse
                 else if (item is Product p)
                 {
                     TreeNode productNode = new TreeNode(p.Name,
-                        Constants.bagIconIndex, Constants.bagIconIndex);
+                        Constants.BagIconIndex, Constants.BagIconIndex);
                     productNode.Name = productNode.Text;
                     node.Nodes.Add(productNode);
                 }
@@ -197,7 +197,7 @@ namespace ProductWarehouse
                 {
                     // Add a new node.
                     TreeNode newNode = new TreeNode(section.Name,
-                        Constants.folderIconIndex, Constants.folderIconIndex);
+                        Constants.FolderIconIndex, Constants.FolderIconIndex);
                     newNode.Name = newNode.Text;
                     CatalogueTreeView.Nodes.Add(newNode);
 
@@ -249,7 +249,7 @@ namespace ProductWarehouse
             OpenFileDialog openFileDialog = new OpenFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = Constants.filterString,
+                Filter = Constants.FilterString,
                 Title = "Select a Warehouse",
             };
 
@@ -436,7 +436,7 @@ namespace ProductWarehouse
             {
                 // Add a new node.
                 TreeNode newNode = new TreeNode(section.Name,
-                    Constants.folderIconIndex, Constants.folderIconIndex);
+                    Constants.FolderIconIndex, Constants.FolderIconIndex);
                 newNode.Name = newNode.Text;
                 CatalogueTreeView.Nodes.Add(newNode);
 
@@ -506,7 +506,7 @@ namespace ProductWarehouse
             SaveFileDialog saveFileDialog = new SaveFileDialog()
             {
                 RestoreDirectory = true,
-                Filter = Constants.filterString,
+                Filter = Constants.FilterString,
                 Title = "Save your Warehouse",
             };
 

@@ -5,12 +5,15 @@
     /// </summary>
     public static class Constants
     {
-        public const string folderIconDirectory = @"..\..\..\icons\open_folder.png";
-        public const int folderIconIndex = 0;
+        public const string FolderIconDirectory = @"..\..\..\icons\open_folder.png";
+        public const int FolderIconIndex = 0;
 
-        public const string bagIconDirectory = @"..\..\..\icons\bag.png";
-        public const int bagIconIndex = 1;
+        public const string BagIconDirectory = @"..\..\..\icons\bag.png";
+        public const int BagIconIndex = 1;
 
-        public const string filterString = "Warehouse files (*.whs)|*.whs";
+        public const string FilterString = "Warehouse files (*.whs)|*.whs";
+
+        public const int MaxSectionCount = 200;
+        public const int MaxProductCount = 1000;
     }
 }

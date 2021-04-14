@@ -19,8 +19,8 @@ namespace ProductWarehouse
         {
             InitializeComponent();
 
-            NumberOfSectionsNumericUD.Maximum = int.MaxValue;
-            NumberOfProductsNumericUD.Maximum = int.MaxValue;
+            NumberOfSectionsNumericUD.Maximum = Constants.MaxSectionCount;
+            NumberOfProductsNumericUD.Maximum = Constants.MaxProductCount; 
         }
 
         /// <summary>

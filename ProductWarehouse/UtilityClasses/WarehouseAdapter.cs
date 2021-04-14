@@ -202,7 +202,7 @@ namespace ProductWarehouse
                 if (!NameAlreadyPresent(p.Name, p.Parent))
                 {
                     parentNode.Nodes.Add(new TreeNode(storable.Name,
-                        Constants.bagIconIndex, Constants.bagIconIndex));
+                        Constants.BagIconIndex, Constants.BagIconIndex));
                     parentNode.Nodes[^1].Name = parentNode.Nodes[^1].Text;
                     storable.Parent.Add(p);
                 }
@@ -218,7 +218,7 @@ namespace ProductWarehouse
                     if (!NameAlreadyPresent(s.Name))
                     {
                         treeView.Nodes.Add(new TreeNode(storable.Name,
-                        Constants.folderIconIndex, Constants.folderIconIndex));
+                        Constants.FolderIconIndex, Constants.FolderIconIndex));
                         treeView.Nodes[^1].Name = treeView.Nodes[^1].Text;
                         warehouse.Sections.Add(s);
                     }
@@ -233,7 +233,7 @@ namespace ProductWarehouse
                     if (!NameAlreadyPresent(s.Name, s.Parent))
                     {
                         parentNode.Nodes.Add(new TreeNode(storable.Name,
-                            Constants.folderIconIndex, Constants.folderIconIndex));
+                            Constants.FolderIconIndex, Constants.FolderIconIndex));
                         parentNode.Nodes[^1].Name = parentNode.Nodes[^1].Text;
                         storable.Parent.Add(s);
                     }
