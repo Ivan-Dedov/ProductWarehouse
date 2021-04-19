@@ -99,8 +99,11 @@ namespace ProductWarehouse
                 {
                     if (p.LeftInStock < threshold)
                     {
-                        res += $"\"{pathToSection}\",\"{p.VendorCode}\",\"{p.Name}\",{p.LeftInStock}" +
-                            Environment.NewLine;
+                        res += $"\"{pathToSection.Replace("\"", "\"\"")}\"," +
+                               $"\"{p.VendorCode.Replace("\"", "\"\"")}\"," +
+                               $"\"{p.Name.Replace("\"", "\"\"")}\"," +
+                               $"{p.LeftInStock}" +
+                               Environment.NewLine;
                     }
                 }
                 else if (item is Section s)
