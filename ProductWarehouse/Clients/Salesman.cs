@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -24,7 +25,11 @@ namespace ProductWarehouse
             Email = email;
 
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            HashedPassword = SHA256.Create().ComputeHash(passwordBytes);
+            byte[] nameBytes = Encoding.UTF8.GetBytes(fullName);
+            byte[] bytes = new byte[passwordBytes.Length + nameBytes.Length];
+            passwordBytes.CopyTo(bytes, 0);
+            nameBytes.CopyTo(bytes, passwordBytes.Length);
+            HashedPassword = SHA256.Create().ComputeHash(bytes);
         }
     }
 }

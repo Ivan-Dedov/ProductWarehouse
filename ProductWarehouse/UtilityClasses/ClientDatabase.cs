@@ -32,7 +32,7 @@ namespace ProductWarehouse
         /// <param name="customer">The client to register.</param>
         public static void Register(Customer customer)
         {
-            if (customers.ContainsKey(customer.Email))
+            if (customers.ContainsKey(customer.Email) || salesman.Email == customer.Email)
             {
                 throw new ArgumentException("A client with this e-mail already exists.");
             }
@@ -59,15 +59,30 @@ namespace ProductWarehouse
         /// <returns>true, if the client has been authorized successfully; false, otherwise.</returns>
         public static bool Authorize(string login, string password)
         {
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            byte[] hashedPassword = SHA256.Create().ComputeHash(passwordBytes);
+            if (customers.ContainsKey(login))
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] nameBytes = Encoding.UTF8.GetBytes(customers[login].FullName);
+                byte[] bytes = new byte[passwordBytes.Length + nameBytes.Length];
+                passwordBytes.CopyTo(bytes, 0);
+                nameBytes.CopyTo(bytes, passwordBytes.Length);
 
-            bool customerLogin = customers.ContainsKey(login) &&
-                                 Enumerable.SequenceEqual(customers[login].HashedPassword, hashedPassword);
-            bool salesmanLogin = salesman.Email == login &&
-                                 Enumerable.SequenceEqual(salesman.HashedPassword, hashedPassword);
+                byte[] hashedPassword = SHA256.Create().ComputeHash(bytes);
 
-            return customerLogin || salesmanLogin;
+                return Enumerable.SequenceEqual(customers[login].HashedPassword, hashedPassword);
+            }
+            else
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] nameBytes = Encoding.UTF8.GetBytes(salesman.FullName);
+                byte[] bytes = new byte[passwordBytes.Length + nameBytes.Length];
+                passwordBytes.CopyTo(bytes, 0);
+                nameBytes.CopyTo(bytes, passwordBytes.Length);
+
+                byte[] hashedPassword = SHA256.Create().ComputeHash(bytes);
+
+                return Enumerable.SequenceEqual(salesman.HashedPassword, hashedPassword);
+            }
         }
     }
 }
