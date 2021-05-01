@@ -14,7 +14,7 @@ namespace ProductWarehouse
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WarehouseViewer());
+            Application.Run(new AuthorisationForm());
         }
     }
 }

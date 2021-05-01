@@ -401,7 +401,7 @@ namespace ProductWarehouse
                             MessageBoxIcon.Error);
                     }
                 }
-                else
+                else if (warehouseAdapter.Find(selectedNode) is Product p)
                 {
                     warehouseAdapter.Remove(selectedNode);
                     hasUnsavedChanges = true;

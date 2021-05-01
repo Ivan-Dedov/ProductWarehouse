@@ -164,7 +164,7 @@ namespace ProductWarehouse
             items.RemoveAt(index);
         }
 
-        public int CompareTo(object? other)
+        public int CompareTo(object other)
         {
             if (other is Section s)
             {

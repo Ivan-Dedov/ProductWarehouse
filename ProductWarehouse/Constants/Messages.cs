@@ -32,5 +32,37 @@
         public const string ConfirmSaveBeforeCreatingNewText =
             "Creating a random Warehouse will erase the current Warehouse. " +
             "Would you like to save the Warehouse?";
+
+        public const string EmptyFullNameCaption =
+            "Full Name is Empty";
+        public const string EmptyFullNameText =
+            "Full name cannot be empty!";
+        public const string IncorrectPhoneCaption =
+            "Incorrect Phone Number";
+        public const string IncorrectPhoneText =
+            "Phone number must be 11 characters long, only numbers are allowed.";
+        public const string EmptyAddressCaption =
+            "Address is Empty";
+        public const string EmptyAddressText =
+            "Address cannot be empty!";
+        public const string EmptyEmailCaption =
+            "E-mail is Empty";
+        public const string EmptyEmailText =
+            "E-mail cannot be empty!";
+        public const string InvalidPasswordCaption =
+            "Invalid Password";
+        public const string InvalidPasswordText =
+            "Password must be 6 - 20 characters long. Only letters A-Z, a-z, numbers 0-9 and " +
+            "the following symbols are allowed: . , _ + - * & # ! ? ( ) [ ]";
+        public const string AllowedPasswordChars =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,_+-*&#!?()[]";
+
+        public const string SignUpFailedCaption =
+            "Could Not Sign Up";
+
+        public const string LoginFailedCaption =
+            "Login Failed";
+        public const string LoginFailedText =
+            "Incorrect login or password. Please try again or sign up.";
     }
 }

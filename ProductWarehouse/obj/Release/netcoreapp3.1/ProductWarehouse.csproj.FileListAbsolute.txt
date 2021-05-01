@@ -17,3 +17,4 @@ C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.dll
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.pdb
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.genruntimeconfig.cache
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.csprojAssemblyReference.cache

@@ -142,6 +142,9 @@ namespace ProductWarehouse
         public void Remove(TreeNode node)
         {
             TreeNode parentNode = node.Parent;
+            IStorable storable = Find(node);
+            IContainer storableParent = storable.Parent;
+
             if (parentNode is null)
             {
                 treeView.Nodes.Remove(node);
@@ -151,8 +154,6 @@ namespace ProductWarehouse
                 parentNode.Nodes.Remove(node);
             }
 
-            IStorable storable = Find(node);
-            IContainer storableParent = storable.Parent;
             if (storableParent is null)
             {
                 warehouse.Sections.Remove(storable as Section);

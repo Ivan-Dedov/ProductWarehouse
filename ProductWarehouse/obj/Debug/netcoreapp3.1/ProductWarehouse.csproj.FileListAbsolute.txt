@@ -18,3 +18,5 @@ C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.ItemEditor.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.CsvExporter.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.WarehouseCreator.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.AuthorisationForm.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.SignUpForm.resources

@@ -15,5 +15,11 @@
 
         public const int MaxSectionCount = 200;
         public const int MaxProductCount = 1000;
+
+        public const string SalesmanFullName = "The Doctor";
+        public const string SalesmanPhoneNumber = "23111963";
+        public const string SalesmanAddress = "Kasterborous, Gallifrey";
+        public const string SalesmanEmail = "salesman@gmail.com";
+        public const string SalesmanPassword = "salesmanPassword";
     }
 }

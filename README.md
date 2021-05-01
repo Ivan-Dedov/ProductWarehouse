@@ -17,4 +17,8 @@
 ## Установленные NuGet пакеты:
 * Newtonsoft.Json
 
+## Логин и пароль для продавца:
+**Логин:** salesman@gmail.com
+**Пароль:** salesmanPassword
+
 ### Удачной проверки! :3
