@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -32,7 +31,7 @@ namespace ProductWarehouse
                 dr[0] = item.Item.Name;
                 dr[1] = item.Price;
                 dr[2] = item.Count;
-                dr[3] = item.Price * item.Count;
+                dr[3] = Math.Round(item.Price * item.Count, 2);
                 dt.Rows.Add(dr);
             }
 

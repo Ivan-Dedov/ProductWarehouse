@@ -18,6 +18,16 @@ namespace ProductWarehouse
         public DateTime Date { get; }
         public OrderStatus Status { get; set; }
 
+        [JsonConstructor]
+        private Order(Customer customer, List<OrderItem> products, long orderNumber,
+            DateTime date, OrderStatus status)
+        {
+            Customer = customer;
+            Products = products;
+            OrderNumber = orderNumber;
+            Date = date;
+            Status = status;
+        }
         public Order(Customer customer, List<OrderItem> products)
         {
             Customer = customer;
