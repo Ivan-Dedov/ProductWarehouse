@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ProductWarehouse
@@ -12,9 +13,10 @@ namespace ProductWarehouse
 
         public List<OrderItem> Products { get; set; }
         public int OrderNumber { get; }
+        [JsonIgnore]
         public Customer Customer { get; }
         public DateTime Date { get; }
-        public OrderState State { get; set; }
+        public OrderStatus Status { get; set; }
 
         public Order(Customer customer, List<OrderItem> products)
         {
@@ -22,7 +24,7 @@ namespace ProductWarehouse
             Products = products;
             OrderNumber = orderNumber++;
             Date = DateTime.Now;
-            State = OrderState.None;
+            Status = OrderStatus.None;
         }
     }
 }

@@ -46,15 +46,22 @@ namespace ProductWarehouse
         private bool sortAllChildren = false;
 
         private bool inSalesmanView = true;
+        private Client client;
+        private Order order;
         #endregion
 
         #region Constructors
         /// <summary>
         /// Creates a new instance of this form.
         /// </summary>
-        public WarehouseViewer(bool inSalesmanView)
+        public WarehouseViewer(Client client)
         {
-            this.inSalesmanView = inSalesmanView;
+            this.client = client;
+            inSalesmanView = client is Salesman;
+            if (!inSalesmanView)
+            {
+                order = new Order(client as Customer, new List<OrderItem>());
+            }
 
             MinimumSize = SystemInformation.PrimaryMonitorSize / 2;
             MaximumSize = SystemInformation.PrimaryMonitorSize;
@@ -71,7 +78,7 @@ namespace ProductWarehouse
             SortDirectChildrenToolStripMenuItem.Checked = true;
             SortAllChildrenToolStripMenuItem.Checked = false;
 
-            ChangeButtonsVisibility(this.inSalesmanView);
+            ChangeButtonsVisibility(inSalesmanView);
         }
         #endregion
 
@@ -101,6 +108,11 @@ namespace ProductWarehouse
                 SortAllChildrenToolStripMenuItem.Visible = false;
                 SortDirectChildrenToolStripMenuItem.Visible = false;
             }
+            else
+            {
+                OrdersToolStripMenuItem.Visible = false;
+                CartToolStripMenuItem.Visible = false;
+            }
         }
 
         #region Setup
@@ -115,11 +127,8 @@ namespace ProductWarehouse
             icons.Images.Add(Image.FromFile(Constants.BagIconDirectory));
             CatalogueTreeView.ImageList = icons;
 
-            // Adding a ContextMenu to the TreeView, but only if the user is a Salesman.
-            if (inSalesmanView)
-            {
-                CatalogueTreeView.ContextMenuStrip = GetContextMenuStrip();
-            }
+            // Adding a ContextMenu to the TreeView.
+            CatalogueTreeView.ContextMenuStrip = GetContextMenuStrip();
         }
         /// <summary>
         /// Supplies the context menu strip for the TreeView.
@@ -129,45 +138,71 @@ namespace ProductWarehouse
         {
             ContextMenuStrip cms = new ContextMenuStrip();
 
-            ToolStripMenuItem addItem = new ToolStripMenuItem()
+            if (inSalesmanView)
             {
-                Name = "AddItemContextMenuItem",
-                Text = "Add Item",
-            };
-            addItem.Click += AddItem_Click;
-            cms.Items.Add(addItem);
+                ToolStripMenuItem addItem = new ToolStripMenuItem()
+                {
+                    Name = "AddItemContextMenuItem",
+                    Text = "Add Item",
+                };
+                addItem.Click += AddItem_Click;
+                cms.Items.Add(addItem);
 
-            ToolStripMenuItem editItem = new ToolStripMenuItem()
-            {
-                Name = "EditItemContextMenuItem",
-                Text = "Edit Item",
-            };
-            editItem.Click += EditItemToolStripMenuItem_Click;
-            cms.Items.Add(editItem);
+                ToolStripMenuItem editItem = new ToolStripMenuItem()
+                {
+                    Name = "EditItemContextMenuItem",
+                    Text = "Edit Item",
+                };
+                editItem.Click += EditItemToolStripMenuItem_Click;
+                cms.Items.Add(editItem);
 
-            ToolStripMenuItem deleteItem = new ToolStripMenuItem()
-            {
-                Name = "DeleteItemContextMenuItem",
-                Text = "Delete Item",
-            };
-            deleteItem.Click += DeleteItem_Click; ;
-            cms.Items.Add(deleteItem);
+                ToolStripMenuItem deleteItem = new ToolStripMenuItem()
+                {
+                    Name = "DeleteItemContextMenuItem",
+                    Text = "Delete Item",
+                };
+                deleteItem.Click += DeleteItem_Click; ;
+                cms.Items.Add(deleteItem);
 
-            ToolStripSeparator separator = new ToolStripSeparator()
-            {
-                Name = "ContextToolStripSeparator_1",
-            };
-            cms.Items.Add(separator);
+                ToolStripSeparator separator = new ToolStripSeparator()
+                {
+                    Name = "ContextToolStripSeparator_1",
+                };
+                cms.Items.Add(separator);
 
-            ToolStripMenuItem sortItems = new ToolStripMenuItem()
+                ToolStripMenuItem sortItems = new ToolStripMenuItem()
+                {
+                    Name = "SortItemsContextMenuItem",
+                    Text = "Sort Items",
+                };
+                sortItems.Click += SortItemsToolStripMenuItem_Click;
+                cms.Items.Add(sortItems);
+            }
+            else
             {
-                Name = "SortItemsContextMenuItem",
-                Text = "Sort Items",
-            };
-            sortItems.Click += SortItemsToolStripMenuItem_Click;
-            cms.Items.Add(sortItems);
+                ToolStripMenuItem addItem = new ToolStripMenuItem()
+                {
+                    Name = "AddToCartContextMenuItem",
+                    Text = "Add to Cart",
+                };
+                addItem.Click += AddToCart_Click;
+                cms.Items.Add(addItem);
+            }
 
             return cms;
+        }
+
+        private void AddToCart_Click(object sender, EventArgs e)
+        {
+            TreeNode selectedNode = CatalogueTreeView.SelectedNode;
+            if (selectedNode is null)
+            {
+                return;
+            }
+
+            Product product = warehouseAdapter.Find(selectedNode) as Product;
+            AddToCartMenu form = new AddToCartMenu(order, product);
+            form.ShowDialog();
         }
 
         /// <summary>
@@ -935,5 +970,17 @@ namespace ProductWarehouse
         #endregion
 
         #endregion
+
+        private void OrdersToolStripMenu_Click(object sender, EventArgs e)
+        {
+            OrdersViewer form = new OrdersViewer(client as Customer);
+            form.ShowDialog();
+        }
+
+        private void CartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CartForm form = new CartForm(client as Customer, order);
+            form.ShowDialog();
+        }
     }
 }

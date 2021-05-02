@@ -65,6 +65,16 @@
         public const string LoginFailedText =
             "Incorrect login or password. Please try again or sign up.";
 
+        public const string ProductAddingFailedCaption =
+            "Could Not Add Product";
+        public const string ProductAddingFailedText =
+            "Cannot add 0 products to cart.";
+
+        public const string EmptyCartCaption =
+            "Empty Cart";
+        public const string EmptyCartText =
+            "The cart is empty. Cannot create Order.";
+
         public const string CouldNotDeserializeCaption =
             "Could Not Deserialize Clients";
         public const string CouldNotDeserializeText =

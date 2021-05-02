@@ -11,4 +11,16 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="OrdersViewer - Копировать.Designer.cs">
+      <DependentUpon>OrdersViewer.Designer.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="OrdersViewer - Копировать.resx">
+      <DependentUpon>OrdersViewer.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

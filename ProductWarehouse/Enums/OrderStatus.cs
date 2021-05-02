@@ -6,7 +6,7 @@ namespace ProductWarehouse
     /// Represents the possible states of a customer order.
     /// </summary>
     [Flags]
-    public enum OrderState
+    public enum OrderStatus
     {
         None = 0,
         Processed = 1,

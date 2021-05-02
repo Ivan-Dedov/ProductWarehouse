@@ -59,12 +59,14 @@ namespace ProductWarehouse
             this.ToolStripSeparator3_1 = new System.Windows.Forms.ToolStripSeparator();
             this.SortDirectChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SortAllChildrenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.CatalogueTreeView = new System.Windows.Forms.TreeView();
-            this.SectionGridView = new System.Windows.Forms.DataGridView();
             this.ViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExpandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CollapseAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.CatalogueTreeView = new System.Windows.Forms.TreeView();
+            this.SectionGridView = new System.Windows.Forms.DataGridView();
+            this.CartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolbarMenu.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SectionGridView)).BeginInit();
@@ -77,7 +79,9 @@ namespace ProductWarehouse
             this.FileToolStripMenuItem,
             this.EditToolStripMenuItem,
             this.SettingsToolStripMenuItem,
-            this.ViewToolStripMenuItem});
+            this.ViewToolStripMenuItem,
+            this.OrdersToolStripMenuItem,
+            this.CartToolStripMenuItem});
             this.MainToolbarMenu.Location = new System.Drawing.Point(0, 0);
             this.MainToolbarMenu.Name = "MainToolbarMenu";
             this.MainToolbarMenu.Size = new System.Drawing.Size(1212, 28);
@@ -285,6 +289,36 @@ namespace ProductWarehouse
             this.SortAllChildrenToolStripMenuItem.Text = "Sort All Nested Children";
             this.SortAllChildrenToolStripMenuItem.Click += new System.EventHandler(this.SortAllChildrenToolStripMenuItem_Click);
             // 
+            // ViewToolStripMenuItem
+            // 
+            this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExpandAllToolStripMenuItem,
+            this.CollapseAllToolStripMenuItem});
+            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
+            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.ViewToolStripMenuItem.Text = "&View";
+            // 
+            // ExpandAllToolStripMenuItem
+            // 
+            this.ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem";
+            this.ExpandAllToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.ExpandAllToolStripMenuItem.Text = "Expand All";
+            this.ExpandAllToolStripMenuItem.Click += new System.EventHandler(this.ExpandAllToolStripMenuItem_Click);
+            // 
+            // CollapseAllToolStripMenuItem
+            // 
+            this.CollapseAllToolStripMenuItem.Name = "CollapseAllToolStripMenuItem";
+            this.CollapseAllToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.CollapseAllToolStripMenuItem.Text = "Collapse All";
+            this.CollapseAllToolStripMenuItem.Click += new System.EventHandler(this.CollapseAllToolStripMenuItem_Click);
+            // 
+            // OrdersToolStripMenuItem
+            // 
+            this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.OrdersToolStripMenuItem.Text = "Orders";
+            this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenu_Click);
+            // 
             // MainTableLayoutPanel
             // 
             this.MainTableLayoutPanel.ColumnCount = 2;
@@ -325,28 +359,12 @@ namespace ProductWarehouse
             this.SectionGridView.TabIndex = 1;
             this.SectionGridView.Visible = false;
             // 
-            // ViewToolStripMenuItem
+            // CartToolStripMenuItem
             // 
-            this.ViewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ExpandAllToolStripMenuItem,
-            this.CollapseAllToolStripMenuItem});
-            this.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem";
-            this.ViewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.ViewToolStripMenuItem.Text = "&View";
-            // 
-            // ExpandAllToolStripMenuItem
-            // 
-            this.ExpandAllToolStripMenuItem.Name = "ExpandAllToolStripMenuItem";
-            this.ExpandAllToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.ExpandAllToolStripMenuItem.Text = "Expand All";
-            this.ExpandAllToolStripMenuItem.Click += new System.EventHandler(this.ExpandAllToolStripMenuItem_Click);
-            // 
-            // CollapseAllToolStripMenuItem
-            // 
-            this.CollapseAllToolStripMenuItem.Name = "CollapseAllToolStripMenuItem";
-            this.CollapseAllToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
-            this.CollapseAllToolStripMenuItem.Text = "Collapse All";
-            this.CollapseAllToolStripMenuItem.Click += new System.EventHandler(this.CollapseAllToolStripMenuItem_Click);
+            this.CartToolStripMenuItem.Name = "CartToolStripMenuItem";
+            this.CartToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.CartToolStripMenuItem.Text = "Cart";
+            this.CartToolStripMenuItem.Click += new System.EventHandler(this.CartToolStripMenuItem_Click);
             // 
             // WarehouseViewer
             // 
@@ -402,6 +420,8 @@ namespace ProductWarehouse
         private System.Windows.Forms.ToolStripMenuItem ViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExpandAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CollapseAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CartToolStripMenuItem;
     }
 }
 

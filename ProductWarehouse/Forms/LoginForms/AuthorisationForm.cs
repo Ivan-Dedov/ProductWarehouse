@@ -37,9 +37,14 @@ namespace ProductWarehouse
             if (ClientDatabase.Authorize(EmailTextBox.Text, PasswordTextBox.Text))
             {
                 Client client = ClientDatabase.GetClient(EmailTextBox.Text);
-                
+
+                if (client is Customer c)
+                {
+                    c.Orders.Add(new Order(c, new List<OrderItem>()));
+                }
+
                 this.Hide();
-                WarehouseViewer form = new WarehouseViewer(client is Salesman);
+                WarehouseViewer form = new WarehouseViewer(client);
                 form.Closed += (s, args) => this.Close();
                 form.ShowDialog();
             }
@@ -52,6 +57,18 @@ namespace ProductWarehouse
 
         private void AuthorisationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            foreach (var kvp in ClientDatabase.Customers)
+            {
+                Customer c = kvp.Value;
+                foreach (var order in c.Orders)
+                {
+                    foreach (var item in order.Products)
+                    {
+                        item.Item.Parent = null;
+                    }
+                }
+            }
+
             using StreamWriter sw = new StreamWriter(Constants.CustomersDirectory);
             string serializedCustomers = JsonConvert.SerializeObject(ClientDatabase.Customers);
             sw.Write(serializedCustomers);
