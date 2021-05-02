@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -9,14 +8,8 @@ namespace ProductWarehouse
     /// Represents the salesman for the Warehouse.
     /// </summary>
     [Serializable]
-    public class Salesman
+    public class Salesman : Client
     {
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public byte[] HashedPassword { get; protected set; }
-
         public Salesman(string fullName, string phoneNumber, string address, string email, string password)
         {
             FullName = fullName;

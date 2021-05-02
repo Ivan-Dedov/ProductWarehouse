@@ -44,14 +44,18 @@ namespace ProductWarehouse
         /// will be sorted too (true).
         /// </summary>
         private bool sortAllChildren = false;
+
+        private bool inSalesmanView = true;
         #endregion
 
         #region Constructors
         /// <summary>
         /// Creates a new instance of this form.
         /// </summary>
-        public WarehouseViewer()
+        public WarehouseViewer(bool inSalesmanView)
         {
+            this.inSalesmanView = inSalesmanView;
+
             MinimumSize = SystemInformation.PrimaryMonitorSize / 2;
             MaximumSize = SystemInformation.PrimaryMonitorSize;
 
@@ -66,10 +70,38 @@ namespace ProductWarehouse
 
             SortDirectChildrenToolStripMenuItem.Checked = true;
             SortAllChildrenToolStripMenuItem.Checked = false;
+
+            ChangeButtonsVisibility(this.inSalesmanView);
         }
         #endregion
 
         #region Methods
+
+        /// <summary>
+        /// Changes the visibility of certain buttons on the tool strip based on
+        /// the view mode.
+        /// </summary>
+        /// <param name="isSalesman">Boolean value: true, if the user is a Salesman; false, otherwise.</param>
+        private void ChangeButtonsVisibility(bool isSalesman)
+        {
+            if (!isSalesman)
+            {
+                NewToolStripMenuItem.Visible = false;
+                OpenToolStripMenuItem.Text = "Select a Warehouse";
+                ToolStripSeparator1_2.Visible = false;
+                GetRandomWhToolStripMenuItem.Visible = false;
+                SaveToolStripMenuItem.Visible = false;
+                SaveAsToolStripMenuItem.Visible = false;
+                ToolStripSeparator1_3.Visible = false;
+                GetCSVToolStripMenuItem.Visible = false;
+
+                EditToolStripMenuItem.Visible = false;
+
+                ToolStripSeparator3_1.Visible = false;
+                SortAllChildrenToolStripMenuItem.Visible = false;
+                SortDirectChildrenToolStripMenuItem.Visible = false;
+            }
+        }
 
         #region Setup
         /// <summary>
@@ -83,8 +115,11 @@ namespace ProductWarehouse
             icons.Images.Add(Image.FromFile(Constants.BagIconDirectory));
             CatalogueTreeView.ImageList = icons;
 
-            // Adding a ContextMenu to the TreeView.
-            CatalogueTreeView.ContextMenuStrip = GetContextMenuStrip();
+            // Adding a ContextMenu to the TreeView, but only if the user is a Salesman.
+            if (inSalesmanView)
+            {
+                CatalogueTreeView.ContextMenuStrip = GetContextMenuStrip();
+            }
         }
         /// <summary>
         /// Supplies the context menu strip for the TreeView.
@@ -282,6 +317,7 @@ namespace ProductWarehouse
                 AddItem(null);
             }
         }
+
         /// <summary>
         /// Adds a new item (if a Node is selected, adds as a child of it; if not, adds
         /// as a new, not nested section).
@@ -376,6 +412,7 @@ namespace ProductWarehouse
                 }
                 hasUnsavedChanges = true;
             }
+
             CatalogueTreeView_AfterSelect(sender, new TreeViewEventArgs(selectedNode));
         }
 
@@ -463,7 +500,7 @@ namespace ProductWarehouse
                 return;
             }
 
-            (selectedItem as Section).Sort(sortAllChildren);
+                (selectedItem as Section).Sort(sortAllChildren);
             UpdateTreeView(warehouse, selectedNode);
         }
         #endregion
@@ -543,7 +580,7 @@ namespace ProductWarehouse
             if (warehouse != null && warehouseAdapter != null && hasUnsavedChanges)
             {
                 switch (MessageBox.Show(Messages.ConfirmSaveText, Messages.ConfirmSaveCaption,
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
                     case DialogResult.Yes:
                         SaveToolStripMenuItem_Click(sender, e);
@@ -631,7 +668,7 @@ namespace ProductWarehouse
             if (saveFileName != null)
             {
                 switch (MessageBox.Show(Messages.ConfirmSaveText, Messages.ConfirmSaveCaption,
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
                     case DialogResult.Yes:
                         SaveToolStripMenuItem_Click(sender, e);

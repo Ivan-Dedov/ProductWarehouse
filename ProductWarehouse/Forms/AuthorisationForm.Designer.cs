@@ -118,6 +118,7 @@ namespace ProductWarehouse
             this.MinimumSize = new System.Drawing.Size(500, 350);
             this.Name = "AuthorisationForm";
             this.Text = "Authorise";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AuthorisationForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

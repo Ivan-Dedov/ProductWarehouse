@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,22 +10,26 @@ namespace ProductWarehouse
     /// Represents a customer who can purchase and order items from the Warehouse.
     /// </summary>
     [Serializable]
-    public class Customer
+    public class Customer : Client
     {
-        public string FullName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public byte[] HashedPassword { get; protected set; }
-        public List<Order> Orders { get; set; }
-        
-        public Customer(string fullName, string phoneNumber, string address, string email, string password)
+        public List<Order> Orders { get; set; } = new List<Order>();
+
+        private Customer(string fullName, string phoneNumber, string address, string email)
         {
             FullName = fullName;
             PhoneNumber = phoneNumber;
             Address = address;
             Email = email;
-
+        }
+        [JsonConstructor]
+        public Customer(string fullName, string phoneNumber, string address, string email, byte[] password)
+            : this(fullName, phoneNumber, address, email)
+        {
+            HashedPassword = password;
+        }
+        public Customer(string fullName, string phoneNumber, string address, string email, string password)
+            : this(fullName, password, address, email)
+        {
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] nameBytes = Encoding.UTF8.GetBytes(fullName);
             byte[] bytes = new byte[passwordBytes.Length + nameBytes.Length];

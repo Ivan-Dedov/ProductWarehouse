@@ -64,5 +64,15 @@
             "Login Failed";
         public const string LoginFailedText =
             "Incorrect login or password. Please try again or sign up.";
+
+        public const string CouldNotDeserializeCaption =
+            "Could Not Deserialize Clients";
+        public const string CouldNotDeserializeText =
+            "The client database file is missing or corrupted. No customers could be loaded.";
+
+        public const string ActionNotAllowedCaption =
+            "Action Forbidden";
+        public const string ActionNotAllowedText =
+            "Customers cannot perform this action. Log in as a Salesman to get access to this action.";
     }
 }

@@ -11,6 +11,8 @@
         public const string BagIconDirectory = @"..\..\..\icons\bag.png";
         public const int BagIconIndex = 1;
 
+        public const string CustomersDirectory = "customers.dtb";
+
         public const string FilterString = "Warehouse files (*.whs)|*.whs";
 
         public const int MaxSectionCount = 200;

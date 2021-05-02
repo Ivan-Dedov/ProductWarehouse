@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ProductWarehouse
@@ -11,6 +14,7 @@ namespace ProductWarehouse
         public AuthorisationForm()
         {
             InitializeComponent();
+            DeserializeDatabase();
         }
 
         /// <summary>
@@ -32,14 +36,38 @@ namespace ProductWarehouse
         {
             if (ClientDatabase.Authorize(EmailTextBox.Text, PasswordTextBox.Text))
             {
+                Client client = ClientDatabase.GetClient(EmailTextBox.Text);
+                
                 this.Hide();
-                WarehouseViewer form = new WarehouseViewer();
+                WarehouseViewer form = new WarehouseViewer(client is Salesman);
                 form.Closed += (s, args) => this.Close();
                 form.ShowDialog();
             }
             else
             {
                 MessageBox.Show(Messages.LoginFailedText, Messages.LoginFailedCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AuthorisationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            using StreamWriter sw = new StreamWriter(Constants.CustomersDirectory);
+            string serializedCustomers = JsonConvert.SerializeObject(ClientDatabase.Customers);
+            sw.Write(serializedCustomers);
+        }
+
+        private void DeserializeDatabase()
+        {
+            try
+            {
+                using StreamReader sr = new StreamReader(Constants.CustomersDirectory);
+                string line = sr.ReadToEnd();
+                ClientDatabase.Customers = JsonConvert.DeserializeObject<Dictionary<string, Customer>>(line);
+            }
+            catch
+            {
+                MessageBox.Show(Messages.CouldNotDeserializeText, Messages.CouldNotDeserializeCaption,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
