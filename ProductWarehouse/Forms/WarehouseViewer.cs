@@ -980,7 +980,10 @@ namespace ProductWarehouse
         private void CartToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CartForm form = new CartForm(client as Customer, order);
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.Yes)
+            {
+                order = new Order(client as Customer, new List<OrderItem>());
+            }
         }
     }
 }

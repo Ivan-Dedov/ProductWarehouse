@@ -38,11 +38,6 @@ namespace ProductWarehouse
             {
                 Client client = ClientDatabase.GetClient(EmailTextBox.Text);
 
-                if (client is Customer c)
-                {
-                    c.Orders.Add(new Order(c, new List<OrderItem>()));
-                }
-
                 this.Hide();
                 WarehouseViewer form = new WarehouseViewer(client);
                 form.Closed += (s, args) => this.Close();
@@ -78,9 +73,19 @@ namespace ProductWarehouse
         {
             try
             {
-                using StreamReader sr = new StreamReader(Constants.CustomersDirectory);
-                string line = sr.ReadToEnd();
-                ClientDatabase.Customers = JsonConvert.DeserializeObject<Dictionary<string, Customer>>(line);
+                using (StreamReader sr = new StreamReader(Constants.CustomersDirectory))
+                {
+                    string line = sr.ReadToEnd();
+                    ClientDatabase.Customers = JsonConvert.DeserializeObject<Dictionary<string, Customer>>(line);
+                }
+
+                foreach(var customer in ClientDatabase.Customers)
+                {
+                    foreach(var order in customer.Value.Orders)
+                    {
+                        Order.OrderNumbers.Add(order.OrderNumber);
+                    }
+                }
             }
             catch
             {

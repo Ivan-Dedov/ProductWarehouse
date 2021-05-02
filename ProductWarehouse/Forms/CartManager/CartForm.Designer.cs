@@ -65,6 +65,10 @@ namespace ProductWarehouse
             // 
             // CartDataGridView
             // 
+            this.CartDataGridView.AllowUserToAddRows = false;
+            this.CartDataGridView.AllowUserToDeleteRows = false;
+            this.CartDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.CartDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.CartDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CartDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CartDataGridView.Location = new System.Drawing.Point(3, 3);

@@ -75,6 +75,11 @@
         public const string EmptyCartText =
             "The cart is empty. Cannot create Order.";
 
+        public const string CannotPayCaption =
+            "Payment Failed";
+        public const string CannotPayText =
+            "You can only pay for a processed order. This order has not been processed yet.";
+
         public const string CouldNotDeserializeCaption =
             "Could Not Deserialize Clients";
         public const string CouldNotDeserializeText =

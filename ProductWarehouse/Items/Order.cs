@@ -9,10 +9,10 @@ namespace ProductWarehouse
     /// </summary>
     public class Order
     {
-        private static int orderNumber = 0;
+        public static List<long> OrderNumbers { get; set; } = new List<long>();
 
         public List<OrderItem> Products { get; set; }
-        public int OrderNumber { get; }
+        public long OrderNumber { get; }
         [JsonIgnore]
         public Customer Customer { get; }
         public DateTime Date { get; }
@@ -22,9 +22,23 @@ namespace ProductWarehouse
         {
             Customer = customer;
             Products = products;
-            OrderNumber = orderNumber++;
+            OrderNumber = GetOrderNumber();
             Date = DateTime.Now;
             Status = OrderStatus.None;
+        }
+
+        private long GetOrderNumber()
+        {
+            Random r = new Random();
+            DateTime t = DateTime.Now;
+            string orderNumber;
+            long number;
+
+            do
+            {
+                orderNumber = t.Ticks.ToString()[9..] + r.Next(0, 100000).ToString();
+            } while (!long.TryParse(orderNumber, out number) || OrderNumbers.Contains(number));
+            return number;
         }
     }
 }

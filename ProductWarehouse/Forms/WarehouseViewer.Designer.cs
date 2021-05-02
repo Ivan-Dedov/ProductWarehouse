@@ -63,10 +63,10 @@ namespace ProductWarehouse
             this.ExpandAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CollapseAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CatalogueTreeView = new System.Windows.Forms.TreeView();
             this.SectionGridView = new System.Windows.Forms.DataGridView();
-            this.CartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainToolbarMenu.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SectionGridView)).BeginInit();
@@ -319,6 +319,13 @@ namespace ProductWarehouse
             this.OrdersToolStripMenuItem.Text = "Orders";
             this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenu_Click);
             // 
+            // CartToolStripMenuItem
+            // 
+            this.CartToolStripMenuItem.Name = "CartToolStripMenuItem";
+            this.CartToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.CartToolStripMenuItem.Text = "Cart";
+            this.CartToolStripMenuItem.Click += new System.EventHandler(this.CartToolStripMenuItem_Click);
+            // 
             // MainTableLayoutPanel
             // 
             this.MainTableLayoutPanel.ColumnCount = 2;
@@ -346,6 +353,8 @@ namespace ProductWarehouse
             // 
             // SectionGridView
             // 
+            this.SectionGridView.AllowUserToAddRows = false;
+            this.SectionGridView.AllowUserToDeleteRows = false;
             this.SectionGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.SectionGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.SectionGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -358,13 +367,6 @@ namespace ProductWarehouse
             this.SectionGridView.Size = new System.Drawing.Size(903, 463);
             this.SectionGridView.TabIndex = 1;
             this.SectionGridView.Visible = false;
-            // 
-            // CartToolStripMenuItem
-            // 
-            this.CartToolStripMenuItem.Name = "CartToolStripMenuItem";
-            this.CartToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
-            this.CartToolStripMenuItem.Text = "Cart";
-            this.CartToolStripMenuItem.Click += new System.EventHandler(this.CartToolStripMenuItem_Click);
             // 
             // WarehouseViewer
             // 

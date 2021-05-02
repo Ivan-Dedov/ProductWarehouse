@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -43,10 +44,12 @@ namespace ProductWarehouse
             if (order.Products.Count > 0)
             {
                 customer.Orders.Add(order);
+                DialogResult = DialogResult.Yes;
                 Close();
             }
             else
             {
+                DialogResult = DialogResult.No;
                 MessageBox.Show(Messages.EmptyCartText, Messages.EmptyCartCaption,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
