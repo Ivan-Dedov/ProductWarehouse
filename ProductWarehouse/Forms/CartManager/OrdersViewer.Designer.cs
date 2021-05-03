@@ -53,6 +53,7 @@ namespace ProductWarehouse
             this.OrdersGridView.Location = new System.Drawing.Point(0, 0);
             this.OrdersGridView.Name = "OrdersGridView";
             this.OrdersGridView.ReadOnly = true;
+            this.OrdersGridView.RowHeadersVisible = false;
             this.OrdersGridView.RowHeadersWidth = 51;
             this.OrdersGridView.RowTemplate.Height = 29;
             this.OrdersGridView.Size = new System.Drawing.Size(482, 453);

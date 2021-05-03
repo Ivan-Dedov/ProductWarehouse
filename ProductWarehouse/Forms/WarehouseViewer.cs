@@ -100,13 +100,18 @@ namespace ProductWarehouse
                 SaveToolStripMenuItem.Visible = false;
                 SaveAsToolStripMenuItem.Visible = false;
                 ToolStripSeparator1_3.Visible = false;
-                GetCSVToolStripMenuItem.Visible = false;
+                GetCSVReportToolStripMenuItem.Visible = false;
+                PaymentReportToolStripMenuItem.Visible = false;
+                ItemReportToolStripMenuItem.Visible = false;
 
                 EditToolStripMenuItem.Visible = false;
 
                 ToolStripSeparator3_1.Visible = false;
                 SortAllChildrenToolStripMenuItem.Visible = false;
                 SortDirectChildrenToolStripMenuItem.Visible = false;
+
+                ClientsToolStripMenuItem.Visible = false;
+                AllOrdersStripMenuItem.Visible = false;
             }
             else
             {
@@ -177,6 +182,20 @@ namespace ProductWarehouse
                 };
                 sortItems.Click += SortItemsToolStripMenuItem_Click;
                 cms.Items.Add(sortItems);
+
+                ToolStripSeparator separator2 = new ToolStripSeparator()
+                {
+                    Name = "ContextToolStripSeparator_2",
+                };
+                cms.Items.Add(separator2);
+
+                ToolStripMenuItem itemReport = new ToolStripMenuItem()
+                {
+                    Name = "GetItemReportContextMenuItem",
+                    Text = "Get Report",
+                };
+                itemReport.Click += ItemReportToolStripMenuItem_Click;
+                cms.Items.Add(itemReport);
             }
             else
             {
@@ -973,7 +992,7 @@ namespace ProductWarehouse
 
         private void OrdersToolStripMenu_Click(object sender, EventArgs e)
         {
-            OrdersViewer form = new OrdersViewer(client as Customer);
+            OrdersViewer form = new OrdersViewer(false, client as Customer);
             form.ShowDialog();
         }
 
@@ -984,6 +1003,104 @@ namespace ProductWarehouse
             {
                 order = new Order(client as Customer, new List<OrderItem>());
             }
+        }
+
+        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomersViewer form = new CustomersViewer();
+            form.ShowDialog();
+        }
+
+        private void AllOrdersStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllOrdersViewer form = new AllOrdersViewer();
+            form.ShowDialog();
+        }
+
+        private void PaymentReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PaymentReport form = new PaymentReport();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                return;
+            }
+        }
+
+        private void ItemReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CatalogueTreeView.SelectedNode is null)
+            {
+                return;
+            }
+
+            try
+            {
+                Product product;
+                if (warehouseAdapter.Find(CatalogueTreeView.SelectedNode) is Product p)
+                {
+                    product = p;
+                }
+                else
+                {
+                    throw new Exception("This item is not a product.");
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    RestoreDirectory = true,
+                    Filter = "CSV files (*.csv)|*.csv",
+                    Title = "Save your CSV report",
+                };
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using StreamWriter sw = new StreamWriter(saveFileDialog.FileName);
+                        sw.Write(GetItemReportCsv(product));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private string GetItemReportCsv(Product p)
+        {
+            p.Parent = null;
+            List<Order> orders = new List<Order>();
+            foreach(var customer in ClientDatabase.Customers.Values)
+            {
+                foreach(var order in customer.Orders)
+                {
+                    order.Customer = customer;
+                    if (order.Products.Exists(x => x.Item.Name == p.Name))
+                    {
+                        orders.Add(order);
+                    }
+                }
+            }
+
+            string res = "Customer Name,E-mail,Address,Phone Number,Order Date" + Environment.NewLine;
+
+            foreach (var order in orders)
+            {
+                res += $"\"{order.Customer.FullName.Replace("\"", "\"\"")}\"," +
+                       $"\"{order.Customer.Email.Replace("\"", "\"\"")}\"," +
+                       $"\"{order.Customer.Address.Replace("\"", "\"\"")}\"," +
+                       $"\"{order.Customer.PhoneNumber}\"," +
+                       $"\"{order.Date}\"" + Environment.NewLine;
+            }
+
+            return res;
         }
     }
 }

@@ -41,7 +41,9 @@ namespace ProductWarehouse
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripSeparator1_2 = new System.Windows.Forms.ToolStripSeparator();
-            this.GetCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GetCSVReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PaymentReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ItemReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripSeparator1_3 = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +66,8 @@ namespace ProductWarehouse
             this.CollapseAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.CartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AllOrdersStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.CatalogueTreeView = new System.Windows.Forms.TreeView();
             this.SectionGridView = new System.Windows.Forms.DataGridView();
@@ -81,7 +85,9 @@ namespace ProductWarehouse
             this.SettingsToolStripMenuItem,
             this.ViewToolStripMenuItem,
             this.OrdersToolStripMenuItem,
-            this.CartToolStripMenuItem});
+            this.CartToolStripMenuItem,
+            this.ClientsToolStripMenuItem,
+            this.AllOrdersStripMenuItem});
             this.MainToolbarMenu.Location = new System.Drawing.Point(0, 0);
             this.MainToolbarMenu.Name = "MainToolbarMenu";
             this.MainToolbarMenu.Size = new System.Drawing.Size(1212, 28);
@@ -98,7 +104,9 @@ namespace ProductWarehouse
             this.SaveToolStripMenuItem,
             this.SaveAsToolStripMenuItem,
             this.ToolStripSeparator1_2,
-            this.GetCSVToolStripMenuItem,
+            this.GetCSVReportToolStripMenuItem,
+            this.PaymentReportToolStripMenuItem,
+            this.ItemReportToolStripMenuItem,
             this.ToolStripSeparator1_3,
             this.ExitToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
@@ -157,12 +165,26 @@ namespace ProductWarehouse
             this.ToolStripSeparator1_2.Name = "ToolStripSeparator1_2";
             this.ToolStripSeparator1_2.Size = new System.Drawing.Size(269, 6);
             // 
-            // GetCSVToolStripMenuItem
+            // GetCSVReportToolStripMenuItem
             // 
-            this.GetCSVToolStripMenuItem.Name = "GetCSVToolStripMenuItem";
-            this.GetCSVToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
-            this.GetCSVToolStripMenuItem.Text = "Get CSV Report";
-            this.GetCSVToolStripMenuItem.Click += new System.EventHandler(this.GetCSVToolStripMenuItem_Click);
+            this.GetCSVReportToolStripMenuItem.Name = "GetCSVReportToolStripMenuItem";
+            this.GetCSVReportToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.GetCSVReportToolStripMenuItem.Text = "Get CSV Report";
+            this.GetCSVReportToolStripMenuItem.Click += new System.EventHandler(this.GetCSVToolStripMenuItem_Click);
+            // 
+            // PaymentReportToolStripMenuItem
+            // 
+            this.PaymentReportToolStripMenuItem.Name = "PaymentReportToolStripMenuItem";
+            this.PaymentReportToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.PaymentReportToolStripMenuItem.Text = "Get Payment Report";
+            this.PaymentReportToolStripMenuItem.Click += new System.EventHandler(this.PaymentReportToolStripMenuItem_Click);
+            // 
+            // ItemReportToolStripMenuItem
+            // 
+            this.ItemReportToolStripMenuItem.Name = "ItemReportToolStripMenuItem";
+            this.ItemReportToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.ItemReportToolStripMenuItem.Text = "Get Item Report";
+            this.ItemReportToolStripMenuItem.Click += new System.EventHandler(this.ItemReportToolStripMenuItem_Click);
             // 
             // ToolStripSeparator1_3
             // 
@@ -326,6 +348,20 @@ namespace ProductWarehouse
             this.CartToolStripMenuItem.Text = "Cart";
             this.CartToolStripMenuItem.Click += new System.EventHandler(this.CartToolStripMenuItem_Click);
             // 
+            // ClientsToolStripMenuItem
+            // 
+            this.ClientsToolStripMenuItem.Name = "ClientsToolStripMenuItem";
+            this.ClientsToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.ClientsToolStripMenuItem.Text = "Clients";
+            this.ClientsToolStripMenuItem.Click += new System.EventHandler(this.ClientsToolStripMenuItem_Click);
+            // 
+            // AllOrdersStripMenuItem
+            // 
+            this.AllOrdersStripMenuItem.Name = "AllOrdersStripMenuItem";
+            this.AllOrdersStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.AllOrdersStripMenuItem.Text = "Orders";
+            this.AllOrdersStripMenuItem.Click += new System.EventHandler(this.AllOrdersStripMenuItem_Click);
+            // 
             // MainTableLayoutPanel
             // 
             this.MainTableLayoutPanel.ColumnCount = 2;
@@ -362,6 +398,7 @@ namespace ProductWarehouse
             this.SectionGridView.Location = new System.Drawing.Point(306, 3);
             this.SectionGridView.Name = "SectionGridView";
             this.SectionGridView.ReadOnly = true;
+            this.SectionGridView.RowHeadersVisible = false;
             this.SectionGridView.RowHeadersWidth = 51;
             this.SectionGridView.RowTemplate.Height = 29;
             this.SectionGridView.Size = new System.Drawing.Size(903, 463);
@@ -411,7 +448,6 @@ namespace ProductWarehouse
         private System.Windows.Forms.ToolStripMenuItem AllChildrenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem GetRandomWhToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1_2;
-        private System.Windows.Forms.ToolStripMenuItem GetCSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1_3;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2_1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2_2;
@@ -424,6 +460,10 @@ namespace ProductWarehouse
         private System.Windows.Forms.ToolStripMenuItem CollapseAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem CartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ClientsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AllOrdersStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem GetCSVReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PaymentReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ItemReportToolStripMenuItem;
     }
 }
-

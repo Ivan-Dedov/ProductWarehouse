@@ -74,6 +74,7 @@ namespace ProductWarehouse
             this.CartDataGridView.Location = new System.Drawing.Point(3, 3);
             this.CartDataGridView.Name = "CartDataGridView";
             this.CartDataGridView.ReadOnly = true;
+            this.CartDataGridView.RowHeadersVisible = false;
             this.CartDataGridView.RowHeadersWidth = 51;
             this.CartDataGridView.RowTemplate.Height = 29;
             this.CartDataGridView.Size = new System.Drawing.Size(476, 401);

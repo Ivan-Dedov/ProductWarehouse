@@ -7,9 +7,11 @@ namespace ProductWarehouse
     public partial class OrdersViewer : Form
     {
         private Customer customer;
+        private bool viewAsSalesman;
 
-        public OrdersViewer(Customer customer)
+        public OrdersViewer(bool viewAsSalesman, Customer customer)
         {
+            this.viewAsSalesman = viewAsSalesman;
             this.customer = customer;
 
             MinimumSize = SystemInformation.PrimaryMonitorSize / 2;
@@ -17,7 +19,7 @@ namespace ProductWarehouse
 
             InitializeComponent();
 
-            this.Text = customer.FullName;
+            this.Text = customer.FullName + "\'s Orders";
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Order #");
@@ -78,15 +80,18 @@ namespace ProductWarehouse
 
             OrdersGridView.DataSource = dt;
 
-            DataGridViewButtonColumn button = new DataGridViewButtonColumn()
+            if (!viewAsSalesman)
             {
-                Name = "PurchaseButton",
-                HeaderText = "Actions",
-                Text = "Purchase",
-                UseColumnTextForButtonValue = true
-            };
-            OrdersGridView.Columns.Add(button);
-            OrdersGridView.CellClick += OnClick;
+                DataGridViewButtonColumn button = new DataGridViewButtonColumn()
+                {
+                    Name = "PurchaseButton",
+                    HeaderText = "Actions",
+                    Text = "Purchase",
+                    UseColumnTextForButtonValue = true
+                };
+                OrdersGridView.Columns.Add(button);
+                OrdersGridView.CellClick += OnClick;
+            }
         }
 
         private void OnClick(object sender, DataGridViewCellEventArgs e)

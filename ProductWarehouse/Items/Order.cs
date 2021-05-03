@@ -12,10 +12,10 @@ namespace ProductWarehouse
         public static List<long> OrderNumbers { get; set; } = new List<long>();
 
         public List<OrderItem> Products { get; set; }
-        public long OrderNumber { get; }
+        public long OrderNumber { get; set; }
         [JsonIgnore]
-        public Customer Customer { get; }
-        public DateTime Date { get; }
+        public Customer Customer { get; set; }
+        public DateTime Date { get; set; }
         public OrderStatus Status { get; set; }
 
         [JsonConstructor]

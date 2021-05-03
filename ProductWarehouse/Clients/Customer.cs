@@ -12,6 +12,24 @@ namespace ProductWarehouse
     [Serializable]
     public class Customer : Client
     {
+        public double TotalAmountPaid
+        {
+            get
+            {
+                double totalAmountPaid = 0;
+                foreach (var order in Orders)
+                {
+                    if (order.Status.HasFlag(OrderStatus.Paid))
+                    {
+                        foreach (var item in order.Products)
+                        {
+                            totalAmountPaid += item.Price * item.Count;
+                        }
+                    }
+                }
+                return Math.Round(totalAmountPaid, 2);
+            }
+        }
         public List<Order> Orders { get; set; } = new List<Order>();
 
         private Customer(string fullName, string phoneNumber, string address, string email)
@@ -28,7 +46,7 @@ namespace ProductWarehouse
             HashedPassword = password;
         }
         public Customer(string fullName, string phoneNumber, string address, string email, string password)
-            : this(fullName, password, address, email)
+            : this(fullName, phoneNumber, address, email)
         {
             byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
             byte[] nameBytes = Encoding.UTF8.GetBytes(fullName);

@@ -40,7 +40,7 @@
         public const string IncorrectPhoneCaption =
             "Incorrect Phone Number";
         public const string IncorrectPhoneText =
-            "Phone number must be 11 characters long, only numbers are allowed.";
+            "Phone number must be 11 characters long, only numbers are allowed. For example: 80006969420";
         public const string EmptyAddressCaption =
             "Address is Empty";
         public const string EmptyAddressText =
@@ -53,9 +53,9 @@
             "Invalid Password";
         public const string InvalidPasswordText =
             "Password must be 6 - 20 characters long. Only letters A-Z, a-z, numbers 0-9 and " +
-            "the following symbols are allowed: . , _ + - * & # ! ? ( ) [ ]";
+            "the following symbols are allowed: . , _ + - * & # % ! ? ( ) [ ]";
         public const string AllowedPasswordChars =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,_+-*&#!?()[]";
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,_+-*&#%!?()[]";
 
         public const string SignUpFailedCaption =
             "Could Not Sign Up";

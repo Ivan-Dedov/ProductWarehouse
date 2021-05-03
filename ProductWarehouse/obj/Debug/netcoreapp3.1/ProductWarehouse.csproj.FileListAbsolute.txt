@@ -23,3 +23,8 @@ C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.AddToCartMenu.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.OrdersViewer.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.CartForm.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.CustomersViewer.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.AllOrdersViewer.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.OrderStatusEditor.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.ItemReport.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.PaymentReport.resources
