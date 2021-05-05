@@ -30,17 +30,17 @@ namespace ProductWarehouse
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.OrdersGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).BeginInit();
+            this.OrdersDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // OrdersGridView
             // 
-            this.OrdersGridView.AllowUserToAddRows = false;
-            this.OrdersGridView.AllowUserToDeleteRows = false;
-            this.OrdersGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.OrdersGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.OrdersGridView.ColumnHeadersHeight = 29;
+            this.OrdersDataGridView.AllowUserToAddRows = false;
+            this.OrdersDataGridView.AllowUserToDeleteRows = false;
+            this.OrdersDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.OrdersDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.OrdersDataGridView.ColumnHeadersHeight = 29;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -48,32 +48,32 @@ namespace ProductWarehouse
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.OrdersGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            this.OrdersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OrdersGridView.Location = new System.Drawing.Point(0, 0);
-            this.OrdersGridView.Name = "OrdersGridView";
-            this.OrdersGridView.ReadOnly = true;
-            this.OrdersGridView.RowHeadersVisible = false;
-            this.OrdersGridView.RowHeadersWidth = 51;
-            this.OrdersGridView.RowTemplate.Height = 29;
-            this.OrdersGridView.Size = new System.Drawing.Size(482, 453);
-            this.OrdersGridView.TabIndex = 0;
+            this.OrdersDataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.OrdersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrdersDataGridView.Location = new System.Drawing.Point(0, 0);
+            this.OrdersDataGridView.Name = "OrdersGridView";
+            this.OrdersDataGridView.ReadOnly = true;
+            this.OrdersDataGridView.RowHeadersVisible = false;
+            this.OrdersDataGridView.RowHeadersWidth = 51;
+            this.OrdersDataGridView.RowTemplate.Height = 29;
+            this.OrdersDataGridView.Size = new System.Drawing.Size(482, 453);
+            this.OrdersDataGridView.TabIndex = 0;
             // 
             // OrdersViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 453);
-            this.Controls.Add(this.OrdersGridView);
+            this.Controls.Add(this.OrdersDataGridView);
             this.Name = "OrdersViewer";
             this.Text = "Your Orders";
-            ((System.ComponentModel.ISupportInitialize)(this.OrdersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrdersDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView OrdersGridView;
+        private System.Windows.Forms.DataGridView OrdersDataGridView;
     }
 }

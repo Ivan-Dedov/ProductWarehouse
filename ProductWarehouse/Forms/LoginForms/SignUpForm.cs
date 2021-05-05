@@ -8,6 +8,9 @@ namespace ProductWarehouse
     /// </summary>
     public partial class SignUpForm : Form
     {
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
         public SignUpForm()
         {
             InitializeComponent();
@@ -90,6 +93,7 @@ namespace ProductWarehouse
             }
             return true;
         }
+
         /// <summary>
         /// Determines whether the input string is a valid password.
         /// </summary>

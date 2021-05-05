@@ -10,7 +10,7 @@ namespace ProductWarehouse
     {
         None = 0,
         Processed = 1,
-        Paid = 2,
+        Purchased = 2,
         Shipped = 4,
         Closed = 8,
     }

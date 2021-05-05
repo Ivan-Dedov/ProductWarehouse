@@ -4,11 +4,25 @@ using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes a form where the user can see all of their orders.
+    /// </summary>
     public partial class OrdersViewer : Form
     {
+        /// <summary>
+        /// The customer whose orders to see.
+        /// </summary>
         private Customer customer;
+        /// <summary>
+        /// Boolean variable: true, if the user logged in is a salesman; false, otherwise.
+        /// </summary>
         private bool viewAsSalesman;
 
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
+        /// <param name="viewAsSalesman">Should the form be displayed in salesman mode.</param>
+        /// <param name="customer">The customer whose orders to show.</param>
         public OrdersViewer(bool viewAsSalesman, Customer customer)
         {
             this.viewAsSalesman = viewAsSalesman;
@@ -24,6 +38,9 @@ namespace ProductWarehouse
             UpdataData();
         }
 
+        /// <summary>
+        /// Updates the data in the data grid.
+        /// </summary>
         private void UpdataData()
         {
             DataTable dt = new DataTable();
@@ -60,7 +77,7 @@ namespace ProductWarehouse
                     dr[4] += "Processed";
                     hasAnyFlags = true;
                 }
-                if (order.Status.HasFlag(OrderStatus.Paid))
+                if (order.Status.HasFlag(OrderStatus.Purchased))
                 {
                     dr[4] += (hasAnyFlags ? Environment.NewLine : string.Empty) + "Purchased";
                     hasAnyFlags = true;
@@ -83,8 +100,8 @@ namespace ProductWarehouse
                 dt.Rows.Add(dr);
             }
 
-            OrdersGridView.Columns.Clear();
-            OrdersGridView.DataSource = dt;
+            OrdersDataGridView.Columns.Clear();
+            OrdersDataGridView.DataSource = dt;
 
             if (!viewAsSalesman)
             {
@@ -95,24 +112,27 @@ namespace ProductWarehouse
                     Text = "Purchase",
                     UseColumnTextForButtonValue = true
                 };
-                OrdersGridView.Columns.Add(button);
-                OrdersGridView.CellClick -= OnClick;
-                OrdersGridView.CellClick += OnClick;
+                OrdersDataGridView.Columns.Add(button);
+                OrdersDataGridView.CellClick -= OnClick;
+                OrdersDataGridView.CellClick += OnClick;
             }
         }
 
+        /// <summary>
+        /// Handles clicking the Purchase button.
+        /// </summary>
         private void OnClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == OrdersGridView.Columns["PurchaseButton"].Index &&
-                e.RowIndex >= 0 && e.RowIndex < OrdersGridView.Rows.Count)
+            if (e.ColumnIndex == OrdersDataGridView.Columns["PurchaseButton"].Index &&
+                e.RowIndex >= 0 && e.RowIndex < OrdersDataGridView.Rows.Count)
             {
                 Order order = customer.Orders[e.RowIndex];
                 if (order.Status.HasFlag(OrderStatus.Processed) &&
-                    !order.Status.HasFlag(OrderStatus.Paid) &&
+                    !order.Status.HasFlag(OrderStatus.Purchased) &&
                     !order.Status.HasFlag(OrderStatus.Shipped) &&
                     !order.Status.HasFlag(OrderStatus.Closed))
                 {
-                    order.Status |= OrderStatus.Paid;
+                    order.Status |= OrderStatus.Purchased;
                     UpdataData();
                 }
                 else

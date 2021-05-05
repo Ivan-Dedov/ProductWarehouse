@@ -4,11 +4,26 @@ using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes the form which displays the customer's cart.
+    /// </summary>
     public partial class CartForm : Form
     {
+        /// <summary>
+        /// The customer whose cart it is.
+        /// </summary>
         private Customer customer;
+        /// <summary>
+        /// The current order with all the items.
+        /// </summary>
         private Order order;
 
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
+        /// <param name="customer">The customer whose cart to show.</param>
+        /// <param name="order">The current active order of this customer (not added to the overall
+        /// order lits).</param>
         public CartForm(Customer customer, Order order)
         {
             MinimumSize = SystemInformation.PrimaryMonitorSize / 2;
@@ -38,6 +53,9 @@ namespace ProductWarehouse
             CartDataGridView.DataSource = dt;
         }
 
+        /// <summary>
+        /// Forms a new Order from the items in the cart.
+        /// </summary>
         private void ProceedToCheckoutButton_Click(object sender, EventArgs e)
         {
             if (order.Products.Count > 0)

@@ -84,6 +84,7 @@ namespace ProductWarehouse
 
         #region Methods
 
+        #region Setup
         /// <summary>
         /// Changes the visibility of certain buttons on the tool strip based on
         /// the view mode.
@@ -120,7 +121,6 @@ namespace ProductWarehouse
             }
         }
 
-        #region Setup
         /// <summary>
         /// Sets up the catalogue TreeView. (Use only once!)
         /// </summary>
@@ -711,6 +711,106 @@ namespace ProductWarehouse
         {
             CatalogueTreeView.CollapseAll();
         }
+        /// <summary>
+        /// Handles showing all orders to the user.
+        /// </summary>
+        private void OrdersToolStripMenu_Click(object sender, EventArgs e)
+        {
+            OrdersViewer form = new OrdersViewer(false, client as Customer);
+            form.ShowDialog();
+            AuthorisationForm.SerializeCustomers();
+        }
+        /// <summary>
+        /// Handles showing the cart to the user.
+        /// </summary>
+        private void CartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CartForm form = new CartForm(client as Customer, order);
+            if (form.ShowDialog() == DialogResult.Yes)
+            {
+                order = new Order(client as Customer, new List<OrderItem>());
+            }
+            AuthorisationForm.SerializeCustomers();
+        }
+        /// <summary>
+        /// Handles showing all clients to the salesman.
+        /// </summary>
+        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomersViewer form = new CustomersViewer();
+            form.ShowDialog();
+        }
+        /// <summary>
+        /// Handles showing all orders to the salesman.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AllOrdersStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllOrdersViewer form = new AllOrdersViewer();
+            form.ShowDialog();
+            AuthorisationForm.SerializeCustomers();
+        }
+        /// <summary>
+        /// Handles creating the payment report.
+        /// </summary>
+        private void PaymentReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PaymentReport form = new PaymentReport();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                return;
+            }
+        }
+        /// <summary>
+        /// Handles creating the item report.
+        /// </summary>
+        private void ItemReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CatalogueTreeView.SelectedNode is null)
+            {
+                return;
+            }
+
+            try
+            {
+                Product product;
+                if (warehouseAdapter.Find(CatalogueTreeView.SelectedNode) is Product p)
+                {
+                    product = p;
+                }
+                else
+                {
+                    throw new Exception("This item is not a product.");
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog()
+                {
+                    RestoreDirectory = true,
+                    Filter = "CSV files (*.csv)|*.csv",
+                    Title = "Save your CSV report",
+                };
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using StreamWriter sw = new StreamWriter(saveFileDialog.FileName);
+                        sw.Write(GetItemReportCsv(product));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
         #endregion
 
         #region Utilities
@@ -986,106 +1086,22 @@ namespace ProductWarehouse
                 }
             }
         }
-        #endregion
-
-        #endregion
-
-        private void OrdersToolStripMenu_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Creates an Item CSV report.
+        /// </summary>
+        /// <param name="product">The product which to use.</param>
+        /// <returns>A string with a CSV encoded file: users who have ordered the 
+        /// required product.</returns>
+        private string GetItemReportCsv(Product product)
         {
-            OrdersViewer form = new OrdersViewer(false, client as Customer);
-            form.ShowDialog();
-            AuthorisationForm.SerializeCustomers();
-        }
-
-        private void CartToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CartForm form = new CartForm(client as Customer, order);
-            if (form.ShowDialog() == DialogResult.Yes)
-            {
-                order = new Order(client as Customer, new List<OrderItem>());
-            }
-            AuthorisationForm.SerializeCustomers();
-        }
-
-        private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CustomersViewer form = new CustomersViewer();
-            form.ShowDialog();
-        }
-
-        private void AllOrdersStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AllOrdersViewer form = new AllOrdersViewer();
-            form.ShowDialog();
-            AuthorisationForm.SerializeCustomers();
-        }
-
-        private void PaymentReportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            PaymentReport form = new PaymentReport();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                return;
-            }
-        }
-
-        private void ItemReportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (CatalogueTreeView.SelectedNode is null)
-            {
-                return;
-            }
-
-            try
-            {
-                Product product;
-                if (warehouseAdapter.Find(CatalogueTreeView.SelectedNode) is Product p)
-                {
-                    product = p;
-                }
-                else
-                {
-                    throw new Exception("This item is not a product.");
-                }
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog()
-                {
-                    RestoreDirectory = true,
-                    Filter = "CSV files (*.csv)|*.csv",
-                    Title = "Save your CSV report",
-                };
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        using StreamWriter sw = new StreamWriter(saveFileDialog.FileName);
-                        sw.Write(GetItemReportCsv(product));
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Messages.UnexpectedErrorCaption,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private string GetItemReportCsv(Product p)
-        {
-            p.Parent = null;
+            product.Parent = null;
             List<Order> orders = new List<Order>();
-            foreach(var customer in ClientDatabase.Customers.Values)
+            foreach (var customer in ClientDatabase.Customers.Values)
             {
-                foreach(var order in customer.Orders)
+                foreach (var order in customer.Orders)
                 {
                     order.Customer = customer;
-                    if (order.Products.Exists(x => x.Item.Name == p.Name && order.Status.HasFlag(OrderStatus.Shipped)))
+                    if (order.Products.Exists(x => x.Item.Name == product.Name && order.Status.HasFlag(OrderStatus.Shipped)))
                     {
                         orders.Add(order);
                     }
@@ -1105,5 +1121,8 @@ namespace ProductWarehouse
 
             return res;
         }
+        #endregion
+
+        #endregion
     }
 }

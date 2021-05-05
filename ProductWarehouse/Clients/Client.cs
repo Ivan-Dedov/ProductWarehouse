@@ -1,5 +1,8 @@
 ﻿namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes a client - a customer or a salesman.
+    /// </summary>
     public class Client
     {
         public string FullName { get; set; }

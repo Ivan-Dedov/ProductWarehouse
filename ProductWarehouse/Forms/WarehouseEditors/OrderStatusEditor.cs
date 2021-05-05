@@ -3,10 +3,20 @@ using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes an item status editor form.
+    /// </summary>
     public partial class OrderStatusEditor : Form
     {
+        /// <summary>
+        /// The order with which to work.
+        /// </summary>
         private Order order;
 
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
+        /// <param name="order">The order with which to work.</param>
         public OrderStatusEditor(Order order)
         {
             this.order = order;
@@ -23,7 +33,7 @@ namespace ProductWarehouse
             }
             else
             {
-                if (order.Status.HasFlag(OrderStatus.Paid))
+                if (order.Status.HasFlag(OrderStatus.Purchased))
                 {
                     bool isShipped = order.Status.HasFlag(OrderStatus.Shipped);
                     ShippedCheckBox.Checked = isShipped;
@@ -47,6 +57,9 @@ namespace ProductWarehouse
             }
         }
 
+        /// <summary>
+        /// Handles clicking the Confirm changes button.
+        /// </summary>
         private void ConfirmChangesButton_Click(object sender, EventArgs e)
         {
             if (ProcessedCheckBox.Checked)

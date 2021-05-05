@@ -5,13 +5,22 @@ using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes a form which creates a report about paid orders.
+    /// </summary>
     public partial class PaymentReport : Form
     {
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
         public PaymentReport()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles clicking the Export button.
+        /// </summary>
         private void ExportReportButton_Click(object sender, EventArgs e)
         {
             try
@@ -50,6 +59,11 @@ namespace ProductWarehouse
             }
         }
 
+        /// <summary>
+        /// Builds the CSV file.
+        /// </summary>
+        /// <param name="amountPaid">The threshold amount of money.</param>
+        /// <returns>The string to put in the csv.</returns>
         private string GetCsv(double amountPaid)
         {
             string res = "Customer Name,E-mail,Address,Phone Number,Total Amount Paid,Threshold Amount" + Environment.NewLine;

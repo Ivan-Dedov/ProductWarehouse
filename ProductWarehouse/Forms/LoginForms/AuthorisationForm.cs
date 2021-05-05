@@ -11,6 +11,9 @@ namespace ProductWarehouse
     /// </summary>
     public partial class AuthorisationForm : Form
     {
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
         public AuthorisationForm()
         {
             InitializeComponent();
@@ -50,6 +53,9 @@ namespace ProductWarehouse
             }
         }
 
+        /// <summary>
+        /// Serializes all the customers and their orders.
+        /// </summary>
         public static void SerializeCustomers()
         {
             foreach (var kvp in ClientDatabase.Customers)
@@ -69,11 +75,17 @@ namespace ProductWarehouse
             sw.Write(serializedCustomers);
         }
 
+        /// <summary>
+        /// Serializes the customers on form closing.
+        /// </summary>
         private void AuthorisationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SerializeCustomers();
         }
 
+        /// <summary>
+        /// Deserializes the clients database from file.
+        /// </summary>
         private void DeserializeDatabase()
         {
             try

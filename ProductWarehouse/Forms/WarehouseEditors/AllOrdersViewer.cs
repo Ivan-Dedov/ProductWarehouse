@@ -6,11 +6,23 @@ using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes a form which shows all the orders to the salesman.
+    /// </summary>
     public partial class AllOrdersViewer : Form
     {
+        /// <summary>
+        /// Should the salesman see only the active orders.
+        /// </summary>
         private bool displayActiveOnly = false;
+        /// <summary>
+        /// The list of orders to display.
+        /// </summary>
         private List<Order> orders;
 
+        /// <summary>
+        /// Creates an instance of this form.
+        /// </summary>
         public AllOrdersViewer()
         {
             MaximumSize = SystemInformation.PrimaryMonitorSize;
@@ -21,6 +33,9 @@ namespace ProductWarehouse
             UpdateData();
         }
 
+        /// <summary>
+        /// Handles clicking the Change Order Status button.
+        /// </summary>
         private void OnClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == OrdersDataGridView.Columns["ChangeOrderStatusButton"].Index &&
@@ -35,6 +50,9 @@ namespace ProductWarehouse
             }
         }
 
+        /// <summary>
+        /// Updates the data for the Data Grid.
+        /// </summary>
         private void UpdateData()
         {
             orders = new List<Order>();
@@ -86,7 +104,7 @@ namespace ProductWarehouse
                     dr[5] += "Processed";
                     hasAnyFlags = true;
                 }
-                if (order.Status.HasFlag(OrderStatus.Paid))
+                if (order.Status.HasFlag(OrderStatus.Purchased))
                 {
                     dr[5] += (hasAnyFlags ? Environment.NewLine : string.Empty) + "Purchased";
                     hasAnyFlags = true;
@@ -124,6 +142,9 @@ namespace ProductWarehouse
             OrdersDataGridView.CellClick += OnClick;
         }
 
+        /// <summary>
+        /// Toggles the view from active orders only and all orders, and vice versa.
+        /// </summary>
         private void ToggleDisplayButton_Click(object sender, EventArgs e)
         {
             displayActiveOnly = !displayActiveOnly;

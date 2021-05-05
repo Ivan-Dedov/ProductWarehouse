@@ -10,6 +10,14 @@ namespace ProductWarehouse
     [Serializable]
     public class Salesman : Client
     {
+        /// <summary>
+        /// Creates a new Salesman.
+        /// </summary>
+        /// <param name="fullName">Their full name.</param>
+        /// <param name="phoneNumber">Their phone number.</param>
+        /// <param name="address">Their address.</param>
+        /// <param name="email">Their e-mail.</param>
+        /// <param name="password">Their password (unhashed).</param>
         public Salesman(string fullName, string phoneNumber, string address, string email, string password)
         {
             FullName = fullName;

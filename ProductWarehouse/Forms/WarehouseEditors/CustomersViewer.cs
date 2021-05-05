@@ -1,11 +1,16 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Windows.Forms;
 
 namespace ProductWarehouse
 {
+    /// <summary>
+    /// Describes a form which shows all the customers to the salesman.
+    /// </summary>
     public partial class CustomersViewer : Form
     {
+        /// <summary>
+        /// Creates a new instance of this form.
+        /// </summary>
         public CustomersViewer()
         {
             MaximumSize = SystemInformation.PrimaryMonitorSize;
@@ -47,6 +52,9 @@ namespace ProductWarehouse
             ClientsDataGridView.CellClick += OnClick;
         }
 
+        /// <summary>
+        /// Handles clicking the View Orders of a customer button.
+        /// </summary>
         private void OnClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == ClientsDataGridView.Columns["ViewOrdersButton"].Index &&

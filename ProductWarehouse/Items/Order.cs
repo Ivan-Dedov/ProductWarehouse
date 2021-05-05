@@ -9,6 +9,7 @@ namespace ProductWarehouse
     /// </summary>
     public class Order
     {
+        #region Properties
         public static List<long> OrderNumbers { get; set; } = new List<long>();
 
         public List<OrderItem> Products { get; set; }
@@ -17,7 +18,9 @@ namespace ProductWarehouse
         public Customer Customer { get; set; }
         public DateTime Date { get; set; }
         public OrderStatus Status { get; set; }
+        #endregion
 
+        #region Constructors
         [JsonConstructor]
         private Order(Customer customer, List<OrderItem> products, long orderNumber,
             DateTime date, OrderStatus status)
@@ -36,7 +39,12 @@ namespace ProductWarehouse
             Date = DateTime.Now;
             Status = OrderStatus.None;
         }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Creates a new individual number for the order.
+        /// </summary>
         private long GetOrderNumber()
         {
             Random r = new Random();
@@ -50,5 +58,6 @@ namespace ProductWarehouse
             } while (!long.TryParse(orderNumber, out number) || OrderNumbers.Contains(number));
             return number;
         }
+        #endregion
     }
 }

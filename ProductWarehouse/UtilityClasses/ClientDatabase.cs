@@ -12,6 +12,7 @@ namespace ProductWarehouse
     [Serializable]
     public static class ClientDatabase
     {
+        #region Properties
         /// <summary>
         /// The salesman of the warehouse.
         /// </summary>
@@ -25,7 +26,9 @@ namespace ProductWarehouse
         /// The dictionary containing all the registered customers. E-mails represent keys.
         /// </summary>
         public static Dictionary<string, Customer> Customers { get; set; } = new Dictionary<string, Customer>();
+        #endregion
 
+        #region Methods
         /// <summary>
         /// Registers a new client in the database.
         /// </summary>
@@ -102,5 +105,6 @@ namespace ProductWarehouse
             }
             throw new KeyNotFoundException("No client with such a name exists.");
         }
+        #endregion
     }
 }
