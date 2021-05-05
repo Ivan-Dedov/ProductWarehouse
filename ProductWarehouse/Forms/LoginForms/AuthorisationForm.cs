@@ -50,7 +50,7 @@ namespace ProductWarehouse
             }
         }
 
-        private void AuthorisationForm_FormClosing(object sender, FormClosingEventArgs e)
+        public static void SerializeCustomers()
         {
             foreach (var kvp in ClientDatabase.Customers)
             {
@@ -67,6 +67,11 @@ namespace ProductWarehouse
             using StreamWriter sw = new StreamWriter(Constants.CustomersDirectory);
             string serializedCustomers = JsonConvert.SerializeObject(ClientDatabase.Customers);
             sw.Write(serializedCustomers);
+        }
+
+        private void AuthorisationForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SerializeCustomers();
         }
 
         private void DeserializeDatabase()

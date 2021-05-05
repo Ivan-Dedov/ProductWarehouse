@@ -78,7 +78,8 @@
         public const string CannotPayCaption =
             "Payment Failed";
         public const string CannotPayText =
-            "You can only pay for a processed order. This order has not been processed yet.";
+            "You can only pay for a processed order. This order has not been processed yet or is already " +
+            "paid for.";
 
         public const string CouldNotDeserializeCaption =
             "Could Not Deserialize Clients";

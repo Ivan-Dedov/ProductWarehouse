@@ -54,6 +54,7 @@ namespace ProductWarehouse
                 ClientDatabase.Register(new Customer(FullNameTextBox.Text,
                     PhoneNumberTextBox.Text, AddressTextBox.Text, EmailTextBox.Text,
                     PasswordTextBox.Text));
+                AuthorisationForm.SerializeCustomers();
                 Close();
             }
             catch (ArgumentException ex)

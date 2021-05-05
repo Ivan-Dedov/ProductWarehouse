@@ -994,6 +994,7 @@ namespace ProductWarehouse
         {
             OrdersViewer form = new OrdersViewer(false, client as Customer);
             form.ShowDialog();
+            AuthorisationForm.SerializeCustomers();
         }
 
         private void CartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1003,6 +1004,7 @@ namespace ProductWarehouse
             {
                 order = new Order(client as Customer, new List<OrderItem>());
             }
+            AuthorisationForm.SerializeCustomers();
         }
 
         private void ClientsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1015,6 +1017,7 @@ namespace ProductWarehouse
         {
             AllOrdersViewer form = new AllOrdersViewer();
             form.ShowDialog();
+            AuthorisationForm.SerializeCustomers();
         }
 
         private void PaymentReportToolStripMenuItem_Click(object sender, EventArgs e)

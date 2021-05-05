@@ -120,6 +120,7 @@ namespace ProductWarehouse
                 UseColumnTextForButtonValue = true,
             };
             OrdersDataGridView.Columns.Add(button);
+            OrdersDataGridView.CellClick -= OnClick;
             OrdersDataGridView.CellClick += OnClick;
         }
 

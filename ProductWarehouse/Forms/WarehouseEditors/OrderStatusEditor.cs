@@ -13,9 +13,38 @@ namespace ProductWarehouse
 
             InitializeComponent();
 
-            ProcessedCheckBox.Checked = order.Status.HasFlag(OrderStatus.Processed);
-            ShippedCheckBox.Checked = order.Status.HasFlag(OrderStatus.Shipped);
-            ClosedCheckBox.Checked = order.Status.HasFlag(OrderStatus.Closed);
+            bool isProcessed = order.Status.HasFlag(OrderStatus.Processed);
+            ProcessedCheckBox.Checked = isProcessed;
+            ProcessedCheckBox.Enabled = !isProcessed;
+            if (!isProcessed)
+            {
+                ShippedCheckBox.Enabled = false;
+                ClosedCheckBox.Enabled = false;
+            }
+            else
+            {
+                if (order.Status.HasFlag(OrderStatus.Paid))
+                {
+                    bool isShipped = order.Status.HasFlag(OrderStatus.Shipped);
+                    ShippedCheckBox.Checked = isShipped;
+                    ShippedCheckBox.Enabled = !isShipped;
+                    if (!isShipped)
+                    {
+                        ClosedCheckBox.Enabled = false;
+                    }
+                    else
+                    {
+                        bool isClosed = order.Status.HasFlag(OrderStatus.Closed);
+                        ClosedCheckBox.Checked = isClosed;
+                        ClosedCheckBox.Enabled = !isClosed;
+                    }
+                }
+                else
+                {
+                    ShippedCheckBox.Enabled = false;
+                    ClosedCheckBox.Enabled = false;
+                }
+            }
         }
 
         private void ConfirmChangesButton_Click(object sender, EventArgs e)
@@ -48,7 +77,7 @@ namespace ProductWarehouse
             }
 
             DialogResult = DialogResult.OK;
-            Close();
+            this.Close();
         }
     }
 }

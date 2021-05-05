@@ -21,6 +21,11 @@ namespace ProductWarehouse
 
             this.Text = customer.FullName + "\'s Orders";
 
+            UpdataData();
+        }
+
+        private void UpdataData()
+        {
             DataTable dt = new DataTable();
             dt.Columns.Add("Order #");
             dt.Columns.Add("Products");
@@ -78,6 +83,7 @@ namespace ProductWarehouse
                 dt.Rows.Add(dr);
             }
 
+            OrdersGridView.Columns.Clear();
             OrdersGridView.DataSource = dt;
 
             if (!viewAsSalesman)
@@ -90,6 +96,7 @@ namespace ProductWarehouse
                     UseColumnTextForButtonValue = true
                 };
                 OrdersGridView.Columns.Add(button);
+                OrdersGridView.CellClick -= OnClick;
                 OrdersGridView.CellClick += OnClick;
             }
         }
@@ -100,9 +107,13 @@ namespace ProductWarehouse
                 e.RowIndex >= 0 && e.RowIndex < OrdersGridView.Rows.Count)
             {
                 Order order = customer.Orders[e.RowIndex];
-                if (order.Status.HasFlag(OrderStatus.Processed))
+                if (order.Status.HasFlag(OrderStatus.Processed) &&
+                    !order.Status.HasFlag(OrderStatus.Paid) &&
+                    !order.Status.HasFlag(OrderStatus.Shipped) &&
+                    !order.Status.HasFlag(OrderStatus.Closed))
                 {
                     order.Status |= OrderStatus.Paid;
+                    UpdataData();
                 }
                 else
                 {
