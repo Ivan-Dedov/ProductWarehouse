@@ -214,7 +214,7 @@ namespace ProductWarehouse
         private void AddToCart_Click(object sender, EventArgs e)
         {
             TreeNode selectedNode = CatalogueTreeView.SelectedNode;
-            if (selectedNode is null)
+            if (selectedNode is null || !(warehouseAdapter.Find(selectedNode) is Product))
             {
                 return;
             }
@@ -1082,7 +1082,7 @@ namespace ProductWarehouse
                 foreach(var order in customer.Orders)
                 {
                     order.Customer = customer;
-                    if (order.Products.Exists(x => x.Item.Name == p.Name))
+                    if (order.Products.Exists(x => x.Item.Name == p.Name && order.Status.HasFlag(OrderStatus.Shipped)))
                     {
                         orders.Add(order);
                     }

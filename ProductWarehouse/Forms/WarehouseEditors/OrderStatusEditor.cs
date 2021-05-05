@@ -47,6 +47,7 @@ namespace ProductWarehouse
                 order.Status &= ~OrderStatus.Closed;
             }
 
+            DialogResult = DialogResult.OK;
             Close();
         }
     }

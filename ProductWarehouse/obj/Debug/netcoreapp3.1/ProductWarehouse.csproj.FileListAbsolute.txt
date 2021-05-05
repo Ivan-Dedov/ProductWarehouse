@@ -26,5 +26,9 @@ C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.CustomersViewer.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.AllOrdersViewer.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.OrderStatusEditor.resources
-C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.ItemReport.resources
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Debug\netcoreapp3.1\ProductWarehouse.PaymentReport.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

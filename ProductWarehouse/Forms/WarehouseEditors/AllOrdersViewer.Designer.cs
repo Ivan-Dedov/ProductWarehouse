@@ -76,6 +76,7 @@ namespace ProductWarehouse
             this.OrdersDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OrdersDataGridView.Location = new System.Drawing.Point(0, 27);
             this.OrdersDataGridView.Name = "OrdersDataGridView";
+            this.OrdersDataGridView.ReadOnly = true;
             this.OrdersDataGridView.RowHeadersVisible = false;
             this.OrdersDataGridView.RowHeadersWidth = 51;
             this.OrdersDataGridView.RowTemplate.Height = 29;

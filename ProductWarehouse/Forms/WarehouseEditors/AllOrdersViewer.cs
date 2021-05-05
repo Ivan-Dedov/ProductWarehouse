@@ -28,8 +28,10 @@ namespace ProductWarehouse
             {
                 Order order = orders[e.RowIndex];
                 OrderStatusEditor form = new OrderStatusEditor(order);
-                form.ShowDialog();
-                UpdateData();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    UpdateData();
+                }
             }
         }
 
