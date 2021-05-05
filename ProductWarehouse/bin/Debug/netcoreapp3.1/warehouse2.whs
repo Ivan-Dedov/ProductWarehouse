@@ -1,0 +1,267 @@
+{
+  "$type": "ProductWarehouse.Warehouse, ProductWarehouse",
+  "Sections": [
+    {
+      "$type": "ProductWarehouse.Section, ProductWarehouse",
+      "Items": [
+        {
+          "$type": "ProductWarehouse.Section, ProductWarehouse",
+          "Items": [
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product1",
+              "VendorCode": "p86",
+              "Price": 45.89,
+              "LeftInStock": 21661,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product6",
+              "VendorCode": "p90",
+              "Price": 48.08,
+              "LeftInStock": 286,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product13",
+              "VendorCode": "p429",
+              "Price": 762.4,
+              "LeftInStock": 2272,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product18",
+              "VendorCode": "p1422",
+              "Price": 81.6,
+              "LeftInStock": 10444,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product23",
+              "VendorCode": "p1748",
+              "Price": 523.47,
+              "LeftInStock": 2559,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            }
+          ],
+          "Name": "Section4",
+          "SortingCode": "s128",
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product4",
+          "VendorCode": "p28",
+          "Price": 367.45,
+          "LeftInStock": 12838,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product5",
+          "VendorCode": "p25",
+          "Price": 198.81,
+          "LeftInStock": 27270,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product7",
+          "VendorCode": "p91",
+          "Price": 117.27,
+          "LeftInStock": 66923,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product8",
+          "VendorCode": "p144",
+          "Price": 240.46,
+          "LeftInStock": 4661,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product10",
+          "VendorCode": "p430",
+          "Price": 625.64,
+          "LeftInStock": 1228,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product14",
+          "VendorCode": "p784",
+          "Price": 954.74,
+          "LeftInStock": 81934,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product15",
+          "VendorCode": "p990",
+          "Price": 247.43,
+          "LeftInStock": 421,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product19",
+          "VendorCode": "p1083",
+          "Price": 73.98,
+          "LeftInStock": 48739,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product21",
+          "VendorCode": "p945",
+          "Price": 766.5,
+          "LeftInStock": 6595,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        }
+      ],
+      "Name": "Section2",
+      "SortingCode": "s152",
+      "Parent": null
+    },
+    {
+      "$type": "ProductWarehouse.Section, ProductWarehouse",
+      "Items": [
+        {
+          "$type": "ProductWarehouse.Section, ProductWarehouse",
+          "Items": [
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product9",
+              "VendorCode": "p405",
+              "Price": 10.26,
+              "LeftInStock": 33322,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product11",
+              "VendorCode": "p418",
+              "Price": 207.82,
+              "LeftInStock": 22438,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product16",
+              "VendorCode": "p48",
+              "Price": 60.32,
+              "LeftInStock": 27242,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product20",
+              "VendorCode": "p1020",
+              "Price": 51.25,
+              "LeftInStock": 539,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            },
+            {
+              "$type": "ProductWarehouse.Product, ProductWarehouse",
+              "Name": "Product22",
+              "VendorCode": "p858",
+              "Price": 48.05,
+              "LeftInStock": 7229,
+              "Description": null,
+              "Photo": null,
+              "Parent": null
+            }
+          ],
+          "Name": "Section1",
+          "SortingCode": "s96",
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product2",
+          "VendorCode": "p92",
+          "Price": 242.23,
+          "LeftInStock": 11950,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product3",
+          "VendorCode": "p141",
+          "Price": 97.45,
+          "LeftInStock": 6716,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product12",
+          "VendorCode": "p672",
+          "Price": 177.58,
+          "LeftInStock": 71385,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        },
+        {
+          "$type": "ProductWarehouse.Product, ProductWarehouse",
+          "Name": "Product17",
+          "VendorCode": "p323",
+          "Price": 137.2,
+          "LeftInStock": 77559,
+          "Description": null,
+          "Photo": null,
+          "Parent": null
+        }
+      ],
+      "Name": "Section3",
+      "SortingCode": "s246",
+      "Parent": null
+    }
+  ]
+}

@@ -18,3 +18,17 @@ C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.pdb
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.genruntimeconfig.cache
 C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.csprojAssemblyReference.cache
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Release\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Release\netcoreapp3.1\System.Drawing.Common.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.AddToCartMenu.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.CartForm.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.OrdersViewer.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.AuthorisationForm.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.SignUpForm.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.AllOrdersViewer.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.CustomersViewer.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.OrderStatusEditor.resources
+C:\Учеба\c_sharp\ProductWarehouse\ProductWarehouse\obj\Release\netcoreapp3.1\ProductWarehouse.PaymentReport.resources
